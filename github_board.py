@@ -57,20 +57,27 @@ def template_to_tape(template, origin):
     return tape
 
 
+def load_template(filepath):
+    """
+    :type filepath: str
+    :rtype: list of list of int
+    """
+    template = []
+    f = file(filepath, "r")
+    for l in f.readlines():
+        template.append(map(int, list(l.strip())))
+    f.close()
+    return template
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Github Board — …")
     parser.add_argument("-p", "--path", required=True, help="path to git repository")
     parser.add_argument("-e", "--email", required=True, help="your github email")
+    parser.add_argument("-t", "--template", required=True, help="path to file with template")
     args = parser.parse_args()
-    email, path = args.email, args.path
-    tpl = [
-        [],
-        [1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1],
-        [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1],
-        [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1],
-        [1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1],
-    ]
+    email, path, tpl_file = args.email, args.path, args.template
+    tpl = load_template(tpl_file)
 
     try:
         repo = pygit2.Repository(path)
