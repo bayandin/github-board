@@ -72,17 +72,17 @@ def load_template(filepath):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Github Board — …")
-    parser.add_argument("-p", "--path", required=True, help="path to git repository")
+    parser.add_argument("-r", "--repo", required=True, help="path to git repository")
     parser.add_argument("-e", "--email", required=True, help="your github email")
     parser.add_argument("-t", "--template", required=True, help="path to file with template")
     args = parser.parse_args()
-    email, path, tpl_file = args.email, args.path, args.template
+    email, repo_path, tpl_file = args.email, args.repo, args.template
     tpl = load_template(tpl_file)
 
     try:
-        repo = pygit2.Repository(path)
+        repo = pygit2.Repository(repo_path)
     except KeyError:
-        raise Exception("{path} - not a git repository".format(path=path))
+        raise Exception("{path} - not a git repository".format(path=repo_path))
     tree = repo.TreeBuilder().write()
 
     head_hex = [] if repo.is_empty else [repo.head.target.hex]
