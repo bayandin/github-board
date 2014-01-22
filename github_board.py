@@ -31,7 +31,7 @@ def board_origin(today):
         :type date: datetime.date
         :rtype: int
         """
-        return 14 - (datetime.date.weekday(date) + 1) % 7
+        return 7 - (datetime.date.weekday(date) + 1) % 7
 
     last_cell_dt = today
     first_cell_dt = datetime.date(last_cell_dt.year - 1, last_cell_dt.month, last_cell_dt.day)
