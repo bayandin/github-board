@@ -1,10 +1,19 @@
 from nose2.tools import params
-from unittest2 import TestCase
 
 from github_board import STEP, template_to_tape
 
+try:
+    import unittest2 as unittest
+except ImportError:
+    import unittest
 
-class TestTemplateToTape(TestCase):
+try:
+    import mock
+except ImportError:
+    import unittest.mock as mock
+
+
+class TestTemplateToTape(unittest.TestCase):
     @params(
         ([[1]], 0, [0]),
         ([[1, 1]], 0, [0, 7 * STEP]),

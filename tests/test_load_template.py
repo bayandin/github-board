@@ -1,12 +1,19 @@
-import mock
-
 from nose2.tools import params
-from unittest2 import TestCase
 
 from github_board import load_template
 
+try:
+    import unittest2 as unittest
+except ImportError:
+    import unittest
 
-class TestLoadTemplate(TestCase):
+try:
+    import mock
+except ImportError:
+    import unittest.mock as mock
+
+
+class TestLoadTemplate(unittest.TestCase):
     @params(
         ("1", [[1]]),
         ("01", [[0, 1]]),
