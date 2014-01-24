@@ -1,21 +1,12 @@
-import shutil
-
-import pygit2
 from nose2.tools import params
 
 from tests import mock
-from tests import unittest
+from tests import RepoTestCase
 
 from github_board import main
 
 
-class TestMain(unittest.TestCase):
-    def setUp(self):
-        self.repo_path = pygit2.init_repository("./tests/repo").path
-
-    def tearDown(self):
-        shutil.rmtree(self.repo_path)
-
+class TestMain(RepoTestCase):
     @params(
         ("0",),
         ("1\n",),
