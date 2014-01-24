@@ -84,13 +84,13 @@ def load_template(file_path):
     return template
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="GitHub board — …")
-    parser.add_argument("-r", "--repo", required=True, help="path to your git repository")
-    parser.add_argument("-e", "--email", help="your GitHub email, if not set, email from git config will be used")
-    parser.add_argument("-t", "--template", required=True, help="path to file with template")
-    args = parser.parse_args()
-    email, repo_path, tpl_file = args.email, args.repo, args.template
+def main(*args):
+    """
+    The main program
+
+    :type args: tuple
+    """
+    email, repo_path, tpl_file = args
     tpl = load_template(tpl_file)
 
     try:
@@ -121,3 +121,12 @@ if __name__ == "__main__":
             head_hex
         )
         head_hex = [commit.hex]
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="GitHub board — …")
+    parser.add_argument("-r", "--repo", required=True, help="path to your git repository")
+    parser.add_argument("-e", "--email", help="your GitHub email, if not set, email from git config will be used")
+    parser.add_argument("-t", "--template", required=True, help="path to file with template")
+    arguments = parser.parse_args()
+    main(arguments.email, arguments.repo, arguments.template)
