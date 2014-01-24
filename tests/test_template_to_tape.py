@@ -1,16 +1,8 @@
 from nose2.tools import params
 
+from tests import unittest
+
 from github_board import STEP, template_to_tape
-
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
-
-try:
-    import mock
-except ImportError:
-    import unittest.mock as mock
 
 
 class TestTemplateToTape(unittest.TestCase):
