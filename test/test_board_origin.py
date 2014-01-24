@@ -4,8 +4,8 @@ import time
 
 from nose2.tools import params
 
-from tests import mock
-from tests import unittest
+from test import mock
+from test import unittest
 
 from github_board import board_origin, UTC_TO_PST_OFFSET
 

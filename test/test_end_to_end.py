@@ -1,6 +1,6 @@
 import subprocess
 
-from tests import RepoTestCase
+from test import RepoTestCase
 
 
 class TestEndToEnd(RepoTestCase):

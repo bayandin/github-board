@@ -2,7 +2,7 @@ import datetime
 
 from nose2.tools import params
 
-from tests import unittest
+from test import unittest
 
 from github_board import STEP, sunday_offset
 

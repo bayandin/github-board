@@ -15,7 +15,7 @@ except ImportError:
 
 class RepoTestCase(unittest.TestCase):
     def setUp(self):
-        self.repo_path = pygit2.init_repository("./tests/repo").path
+        self.repo_path = pygit2.init_repository("./test/repo").path
 
     def tearDown(self):
         shutil.rmtree(self.repo_path)

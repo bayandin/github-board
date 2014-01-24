@@ -1,6 +1,6 @@
 from nose2.tools import params
 
-from tests import unittest
+from test import unittest
 
 from github_board import STEP, template_to_tape
 

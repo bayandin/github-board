@@ -1,7 +1,7 @@
 from nose2.tools import params
 
-from tests import mock
-from tests import RepoTestCase
+from test import mock
+from test import RepoTestCase
 
 from github_board import main
 
