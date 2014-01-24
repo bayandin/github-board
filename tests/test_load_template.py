@@ -19,5 +19,5 @@ class TestLoadTemplate(unittest.TestCase):
 
     )
     def test(self, content, expected_result):
-        with mock.patch('github_board.open', mock.mock_open(read_data=content), create=True):
+        with mock.patch("github_board.open", mock.mock_open(read_data=content), create=True):
             self.assertListEqual(expected_result, load_template("fake_path"))

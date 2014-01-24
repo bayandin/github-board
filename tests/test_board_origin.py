@@ -21,7 +21,7 @@ class TestBoardOrigin(unittest.TestCase):
     )
     def test(self, date, timezone, sunday_offset, expected_result):
         self.set_timezone(timezone)
-        with mock.patch("github_board.sunday_offset", mock.MagicMock(return_value=sunday_offset)):
+        with mock.patch("github_board.sunday_offset", mock.Mock(return_value=sunday_offset)):
             self.assertEqual(expected_result, board_origin(date))
 
     @staticmethod

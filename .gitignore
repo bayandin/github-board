@@ -1,2 +1,5 @@
 ### Python ###
 *.py[cod]
+
+### Tests ###
+tests/repo
