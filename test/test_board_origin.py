@@ -17,7 +17,7 @@ class TestBoardOrigin(unittest.TestCase):
         (datetime.date(1971, 1, 1), "America/New_York", 0, UTC_TO_PST_OFFSET),
         (datetime.date(1971, 1, 1), "PST8PDT", 0, UTC_TO_PST_OFFSET),
         (datetime.date(1971, 1, 1), "UTC", 42, 42 + UTC_TO_PST_OFFSET),
-        (datetime.date(2014, 1, 22), "Europe/Moscow", 0, 1358812800 + UTC_TO_PST_OFFSET)
+        (datetime.date(2014, 1, 22), "Europe/Moscow", 0, 1358812800 + UTC_TO_PST_OFFSET),
     )
     def test(self, date, timezone, sunday_offset, expected_result):
         self.set_timezone(timezone)

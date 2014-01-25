@@ -1,7 +1,7 @@
 # github-board
 [![Build Status](https://travis-ci.org/bayandin/github-board.png)](https://travis-ci.org/bayandin/github-board)
 
-![Example](https://raw.github.com/bayandin/github-board/master/example.png)
+![Example](https://raw.github.com/bayandin/github-board/master/templates/default.png)
 
 ### Usage
 ```bash
