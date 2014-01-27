@@ -85,14 +85,59 @@ def load_template(file_path):
     return template
 
 
+def template_size(template):
+    """
+    Returns template width and height
+
+    :type template: list of list of int
+    :rtype: dict
+    """
+    size = {
+        "width": max([len(row) for row in template]) if len(template) > 0 else 0,
+        "height": len(template),
+    }
+    return size
+
+
+def align_template(template, alignment=None):
+    """
+    Returns aligned template
+
+    :type template: list of list of int
+    :type alignment: str
+    :rtype: list of list of int
+    """
+    size = template_size(template)
+    board = {
+        "width": 51,
+        "height": 7,
+    }
+    out = template[:]
+
+    if alignment == "center":
+        offset = {
+            "width": int((board["width"] - size["width"]) / 2),
+            "height": int((board["height"] - size["height"]) / 2),
+        }
+        for i in out:
+            i[0:0] = [0] * offset["width"]
+        for i in range(offset["height"]):
+            out.insert(0, [0])
+        return out
+    else:
+        return out
+
+
 def main(*args):
     """
     The main program
 
     :type args: tuple
     """
-    email, repo_path, tpl_file = args
+    email, repo_path, tpl_file, alignment = args
+
     tpl = load_template(tpl_file)
+    tpl = align_template(tpl, alignment)
 
     try:
         repo = pygit2.Repository(repo_path)
@@ -129,5 +174,6 @@ if __name__ == "__main__":
     parser.add_argument("-r", "--repo", required=True, help="path to your git repository")
     parser.add_argument("-e", "--email", help="your GitHub email, if not set, email from git config will be used")
     parser.add_argument("-t", "--template", required=True, help="path to file with template")
+    parser.add_argument("-a", "--alignment", help="template alignment, supported variants: center")
     arguments = parser.parse_args()
-    main(arguments.email, arguments.repo, arguments.template)
+    main(arguments.email, arguments.repo, arguments.template, arguments.alignment)
