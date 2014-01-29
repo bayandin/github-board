@@ -1,11 +1,11 @@
 from nose2.tools import params
 
-from test import unittest
+from test import GithubBoardTestCase
 
 from github_board import template_size
 
 
-class TestTemplateSize(unittest.TestCase):
+class TestTemplateSize(GithubBoardTestCase):
     @params(
         ([], {"height": 0, "width": 0}),
         ([[1]], {"height": 1, "width": 1}),

@@ -1,11 +1,11 @@
 from nose2.tools import params
 
-from test import unittest
+from test import GithubBoardTestCase
 
 from github_board import align_template
 
 
-class TestAlignTemplate(unittest.TestCase):
+class TestAlignTemplate(GithubBoardTestCase):
     @params(
         ([[1]], [[0], [0], [0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]]),
         ([[1, 2]], [[0], [0], [0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2]]),

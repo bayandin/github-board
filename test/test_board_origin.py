@@ -5,12 +5,12 @@ import time
 from nose2.tools import params
 
 from test import mock
-from test import unittest
+from test import GithubBoardTestCase
 
 from github_board import board_origin, UTC_TO_PST_OFFSET
 
 
-class TestBoardOrigin(unittest.TestCase):
+class TestBoardOrigin(GithubBoardTestCase):
     @params(
         (datetime.date(1971, 1, 1), "UTC", 0, UTC_TO_PST_OFFSET),
         (datetime.date(1971, 1, 1), "Asia/Novosibirsk", 0, UTC_TO_PST_OFFSET),

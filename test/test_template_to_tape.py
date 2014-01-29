@@ -1,11 +1,11 @@
 from nose2.tools import params
 
-from test import unittest
+from test import GithubBoardTestCase
 
 from github_board import STEP, template_to_tape
 
 
-class TestTemplateToTape(unittest.TestCase):
+class TestTemplateToTape(GithubBoardTestCase):
     @params(
         ([[1]], 0, [0]),
         ([[1, 1]], 0, [0, 7 * STEP]),

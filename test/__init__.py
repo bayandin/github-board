@@ -13,7 +13,11 @@ except ImportError:
     import unittest.mock as mock
 
 
-class RepoTestCase(unittest.TestCase):
+class GithubBoardTestCase(unittest.TestCase):
+    pass
+
+
+class RepoTestCase(GithubBoardTestCase):
     def setUp(self):
         self.repo_path = pygit2.init_repository("./test/repo").path
 

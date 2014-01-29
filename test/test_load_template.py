@@ -1,12 +1,12 @@
 from nose2.tools import params
 
 from test import mock
-from test import unittest
+from test import GithubBoardTestCase
 
 from github_board import COMMIT_MULTIPLIER, load_template
 
 
-class TestLoadTemplate(unittest.TestCase):
+class TestLoadTemplate(GithubBoardTestCase):
     @params(
         ("1", [[1 * COMMIT_MULTIPLIER]]),
         ("01", [[0, 1 * COMMIT_MULTIPLIER]]),

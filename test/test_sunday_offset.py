@@ -2,12 +2,12 @@ import datetime
 
 from nose2.tools import params
 
-from test import unittest
+from test import GithubBoardTestCase
 
 from github_board import STEP, sunday_offset
 
 
-class TestSundayOffset(unittest.TestCase):
+class TestSundayOffset(GithubBoardTestCase):
     @params(
         (datetime.date(2014, 1, 19), 7 * STEP),   # Sunday
         (datetime.date(2007, 12, 31), 6 * STEP),  # Monday
