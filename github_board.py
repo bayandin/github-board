@@ -36,7 +36,7 @@ def board_origin(today):
 
 def sunday_offset(date, reverse=False):
     """
-    Calculates time from date to the next or previous sunday in seconds
+    Calculates time from date to the next sunday or previous saturday in seconds
 
     :type date: datetime.date
     :type reverse: bool
