@@ -151,12 +151,11 @@ def main(*args):
 
     if email is None:
         emails = repo.config.get_multivar("user.email")
-        emails = []
         if len(emails) > 0:
             email = emails[~0]
         else:
             raise RuntimeError("You should specify email by command line parameter (--email or -e) "
-                            "or use one of the configuration files of the git")
+                               "or use one of the configuration files of the git")
 
     tree = repo.TreeBuilder().write()
 
