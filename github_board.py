@@ -147,7 +147,7 @@ def main(*args):
     try:
         repo = pygit2.Repository(repo_path)
     except KeyError:
-        raise Exception("'{path}' - not a git repository".format(path=repo_path))
+        raise RuntimeError("'{path}' - not a git repository".format(path=repo_path))
 
     if email is None:
         emails = repo.config.get_multivar("user.email")
@@ -155,7 +155,7 @@ def main(*args):
         if len(emails) > 0:
             email = emails[~0]
         else:
-            raise Exception("You should specify email by command line parameter (--email or -e) "
+            raise RuntimeError("You should specify email by command line parameter (--email or -e) "
                             "or use one of the configuration files of the git")
 
     tree = repo.TreeBuilder().write()
