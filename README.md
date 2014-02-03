@@ -1,7 +1,7 @@
 # github-board
 [![Build Status](https://travis-ci.org/bayandin/github-board.png)](https://travis-ci.org/bayandin/github-board)
 
-![Default](https://raw.github.com/bayandin/github-board/master/templates/default.png)
+![Default](templates/default.png)
 
 ### Usage
 ```bash
@@ -9,4 +9,4 @@ $ ./github_board.py -r ~/my/repo -t ./templates/default.tpl -e my@email.com
 ```
 
 ### Thanks
-* [Eric Romano](https://github.com/gelstudios) for new cool templates ([kitty](https://raw.github.com/bayandin/github-board/master/templates/kitty.png) and [oneup](https://raw.github.com/bayandin/github-board/master/templates/oneup.png) from [gelstudios/gitfiti](https://github.com/gelstudios/gitfiti))
+* [Eric Romano](https://github.com/gelstudios) for new cool templates ([kitty](templates/kitty.png) and [oneup](templates/oneup.png) from [gelstudios/gitfiti](https://github.com/gelstudios/gitfiti))
