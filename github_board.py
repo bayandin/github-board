@@ -150,16 +150,15 @@ def main(*args):
         raise RuntimeError("'{path}' - not a git repository".format(path=repo_path))
 
     if email is None:
-        emails = repo.config.get_multivar("user.email")
-        if len(emails) > 0:
-            email = emails[~0]
+        if "user.email" in repo.config:
+            email = repo.config["user.email"]
         else:
             raise RuntimeError("You should specify email by command line parameter (--email or -e) "
                                "or use one of the configuration files of the git")
 
     tree = repo.TreeBuilder().write()
 
-    head_hex = [] if repo.is_empty else [repo.head.target.hex]
+    head = [] if repo.is_empty else [str(repo.head.target)]
     for timestamp in template_to_tape(tpl, board_origin(datetime.date.today())):
         author = pygit2.Signature(name="Anonymous", email=email, time=timestamp)
         commit = repo.create_commit(
@@ -168,9 +167,9 @@ def main(*args):
             author,
             "",
             tree,
-            head_hex
+            head
         )
-        head_hex = [commit.hex]
+        head = [str(commit)]
 
 
 if __name__ == "__main__":

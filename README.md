@@ -5,7 +5,7 @@
 
 ### Usage
 ```bash
-$ ./github_board.py -r ~/my/repo -t ./templates/default.tpl -e my@email.com
+$ ./github_board.py -r ~/my/repo -t ./templates/default.tpl -e my@email.com -a center
 ```
 
 ### Thanks
