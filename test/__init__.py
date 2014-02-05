@@ -19,7 +19,7 @@ class GithubBoardTestCase(unittest.TestCase):
 
 class RepoTestCase(GithubBoardTestCase):
     def setUp(self):
-        self.repo_path = pygit2.init_repository("./test/repo").path
+        self.repo = pygit2.init_repository("./test/repo")
 
     def tearDown(self):
-        shutil.rmtree(self.repo_path)
+        shutil.rmtree(self.repo.path)

@@ -13,7 +13,7 @@ class TestEndToEnd(RepoTestCase):
     def test(self, alignment):
         return_code = subprocess.call([
             "./github_board.py",
-            "-r", self.repo_path,
+            "-r", self.repo.path,
             "-t", "./templates/default.tpl",
             "-e", "test@test",
             "-a", alignment,
