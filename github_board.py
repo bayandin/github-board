@@ -12,7 +12,13 @@
 
 import argparse
 import datetime
+import json
 import time
+
+try:
+    import urllib2 as url_request
+except ImportError:
+    from urllib import request as url_request
 
 import pygit2
 
@@ -131,6 +137,28 @@ def align_template(template, alignment=None):
         return out
     else:
         return out
+
+
+def min_max_for_user(user):
+    """
+    Calculates min and max by count of commits from the github contribution calendar
+
+    :type user: str
+    :rtype: tuple
+    """
+    url = "https://github.com/users/{user}/contributions_calendar_data".format(user=user)
+    try:
+        response = url_request.urlopen(url)
+    except url_request.HTTPError:
+        raise RuntimeError("Cannot receive data for '{user}'".format(user=user))
+
+    content = response.read()
+    data = json.loads(content.decode("utf-8"))
+
+    maximum = max(j for (i, j) in data)
+    minimum = min(j for (i, j) in data)
+
+    return minimum, maximum
 
 
 def main(*args):

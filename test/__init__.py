@@ -12,6 +12,11 @@ try:
 except ImportError:
     import unittest.mock as mock
 
+try:
+    from StringIO import StringIO as BytesIO
+except ImportError:
+    from io import BytesIO
+
 
 class GithubBoardTestCase(unittest.TestCase):
     pass
