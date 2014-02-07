@@ -155,8 +155,11 @@ def min_max_for_user(user):
     content = response.read()
     data = json.loads(content.decode("utf-8"))
 
-    maximum = max(j for (i, j) in data)
-    minimum = min(j for (i, j) in data)
+    maximum = max(i for (_, i) in data)
+    if maximum == 0:
+        minimum = 0
+    else:
+        minimum = min(i for (_, i) in data if i > 0)
 
     return minimum, maximum
 
