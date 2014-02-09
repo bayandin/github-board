@@ -175,10 +175,7 @@ def main(*args):
     tpl = load_template(tpl_file)
     tpl = align_template(tpl, alignment)
 
-    try:
-        repo = pygit2.Repository(repo_path)
-    except KeyError:
-        raise RuntimeError("'{path}' - not a git repository".format(path=repo_path))
+    repo = pygit2.init_repository(repo_path)
 
     if email is None:
         if "user.email" in repo.config:
@@ -189,7 +186,7 @@ def main(*args):
 
     tree = repo.TreeBuilder().write()
 
-    head = [] if repo.is_empty else [str(repo.head.target)]
+    parents = [] if repo.is_empty else [str(repo.head.target)]
     for timestamp in template_to_tape(tpl, board_origin(datetime.date.today())):
         author = pygit2.Signature(name="Anonymous", email=email, time=timestamp)
         commit = repo.create_commit(
@@ -198,9 +195,9 @@ def main(*args):
             author,
             "",
             tree,
-            head
+            parents
         )
-        head = [str(commit)]
+        parents = [str(commit)]
 
 
 if __name__ == "__main__":

@@ -18,11 +18,3 @@ class TestMain(RepoTestCase):
             with mock.patch("github_board.pygit2.Repository.create_commit", mock.Mock()) as m:
                 main("test@test", self.repo.path, template, None)
                 self.assertEquals(sum([int(i) for i in template if i.isdigit()]), len(m.mock_calls))
-
-    @params(
-        ("/",),
-    )
-    def test_bad_path(self, bad_path):
-        with mock.patch("github_board.open", mock.mock_open(), create=True):
-            with mock.patch("github_board.pygit2.Repository.create_commit", mock.Mock()):
-                self.assertRaises(RuntimeError, main, "test@test", bad_path, None, None)
